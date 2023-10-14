@@ -7,9 +7,11 @@ import { persistStore, FLUSH,
   PERSIST,
   PURGE,
   REGISTER, } from 'redux-persist'
+import { authReducer } from "./authSlice";
 
 export const store = configureStore({
-    reducer: {
+  reducer: {
+        auth: authReducer,
         contacts: persistedReducer,
         filter: filterReduser
     },
