@@ -1,20 +1,16 @@
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
-import { Button, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { signupThunk } from 'redux/thunk';
+import { getContacsThunk, loginThunk } from 'redux/thunk';
 
-function SignUpForm() {
-  const [name, setName] = useState('');
+function LogInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(signupThunk({ name, email, password }));
+    dispatch(loginThunk({ email, password }));
   };
 
   return (
@@ -27,39 +23,29 @@ function SignUpForm() {
         padding: '15px',
       }}
       noValidate
-      autoComplete="off"
       action="submit"
       onSubmit={handleSubmit}
     >
-      <Typography variant="h3">Registration</Typography>
+      <Typography variant="h3">Log In</Typography>
       <TextField
         required
-        id="name"
-        label="Name"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
-      <TextField
-        required
-        id="signup-email"
+        id="email"
         label="E-mail"
         value={email}
         onChange={e => setEmail(e.target.value)}
       />
       <TextField
         required
-        autoComplete="off"
-        type="password"
-        id="signup-password"
+        id="password"
         label="Password"
         value={password}
         onChange={e => setPassword(e.target.value)}
       />
       <Button type="submit" variant="contained" size="large">
-        Sign Up
+        Log In
       </Button>
     </Box>
   );
 }
 
-export default SignUpForm;
+export default LogInForm;

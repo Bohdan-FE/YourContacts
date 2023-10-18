@@ -1,4 +1,4 @@
-import { signupThunk } from "./thunk";
+import { loginThunk, signupThunk } from "./thunk";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -16,6 +16,12 @@ export const authSlice = createSlice({
         builder.addCase(signupThunk.fulfilled, (state, {payload}) => {
             state.user = payload.user
             state.token = payload.token
+            state.isLoggedIn = true
+        })
+        .addCase(loginThunk.fulfilled, (state, {payload}) => {
+            state.user = payload.user
+            state.token = payload.token
+            state.isLoggedIn = true
         })
     }
 })

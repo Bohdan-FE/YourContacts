@@ -1,18 +1,24 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { List } from './ContactList.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getContacsThunk } from 'redux/thunk';
+import { isLoggedInSelector, visibleItemsSelector } from 'redux/selectors';
 
 export const ContactList = () => {
-  const { contacts } = useSelector(state => state.contacts);
-  const { filter } = useSelector(state => state.filter);
+  const contacts = useSelector(visibleItemsSelector);
+  const isLoggedIn = useSelector(isLoggedInSelector);
+  const dispatch = useDispatch();
 
-  const visibleItems = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(getContacsThunk());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <List>
-      {visibleItems.map(contact => (
+      {contacts.map(contact => (
         <ContactListItem key={contact.id} contact={contact} />
       ))}
     </List>
