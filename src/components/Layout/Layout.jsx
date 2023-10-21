@@ -1,9 +1,19 @@
 import { Container } from 'components/App/App.styled';
 import Header from 'components/Header/Header';
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Suspense, useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 function Layout() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  console.log(location);
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/login');
+    }
+  }, [location, navigate]);
+
   return (
     <>
       <Header />
