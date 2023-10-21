@@ -36,6 +36,7 @@ function LogInForm() {
       />
       <TextField
         required
+        type="password"
         id="password"
         label="Password"
         value={password}

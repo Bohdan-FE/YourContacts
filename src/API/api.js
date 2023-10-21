@@ -7,25 +7,36 @@ const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// const clearAuthHeader = () => {
-//   axios.defaults.headers.common.Authorization = '';
-// };
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
 
 export const signup = async (data) => {
-    const respons = await axios.post('/users/signup', data)
-    setAuthHeader(respons.data.token);
-    return respons.data 
+    const response = await axios.post('/users/signup', data)
+    setAuthHeader(response.data.token);
+    return response.data 
 }
 
 export const login = async (data) => {
-    const respons = await axios.post('/users/login', data)
-    setAuthHeader(respons.data.token);
-    return respons.data
+    const response = await axios.post('/users/login', data)
+    setAuthHeader(response.data.token);
+    return response.data
+}
+
+export const logout = async () => {
+    await axios.post('/users/logout')
+    clearAuthHeader()
 }
 
 export const getUser = async () => {
-    const respons = await axios('/users/current')
-    return respons.data
+    const response = await axios('/users/current')
+    return response.data
+}
+
+export const refreshUser = async (token) => {
+    setAuthHeader(token)
+    const response = await axios.get('/users/current')
+    return response.data
 }
 
 export const getContacts = async () => {
