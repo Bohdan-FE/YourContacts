@@ -31,7 +31,7 @@ function SignUpForm() {
       action="submit"
       onSubmit={handleSubmit}
     >
-      <Typography variant="h3">Registration</Typography>
+      <Typography variant="h3">Register</Typography>
       <TextField
         required
         id="name"
