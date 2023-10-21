@@ -3,9 +3,6 @@ import { lazy, useEffect } from 'react';
 import Layout from 'components/Layout/Layout';
 import { RestrictedRoute } from 'components/RestrictedRouts';
 import { PrivateRoute } from 'components/PrivateRoutes';
-import LoginPage from 'pages/login';
-import RegisterPage from 'pages/register';
-import ContactsPage from 'pages/contacts';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from 'redux/thunk';
 import { isRefreshingSelector } from 'redux/selectors';
@@ -30,22 +27,19 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegisterPage />}
-            />
+            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
           }
         />
         <Route
           path="/contacts"
           element={
-            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            <PrivateRoute redirectTo="/login" component={<Contacts />} />
           }
         />
       </Route>
