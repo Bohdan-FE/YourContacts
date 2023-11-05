@@ -1,4 +1,4 @@
-import AppBar from '@mui/material/AppBar';
+import { AppBar, Typography } from '@mui/material';
 import Navigation from 'components/Navigatin/Navigation';
 import AuthNavigation from 'components/Navigatin/AuthNavigation';
 import { useSelector } from 'react-redux';
@@ -14,9 +14,11 @@ function Header() {
         display: 'flex',
         gap: '20px',
         padding: '15px',
+        bgcolor: 'FC5404',
       }}
     >
-      {isLoggedIn ? <AuthNavigation /> : <Navigation />}
+      <Typography component={'span'}>LOGO</Typography>
+      {isLoggedIn && <AuthNavigation />}
     </AppBar>
   );
 }

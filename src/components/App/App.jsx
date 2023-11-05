@@ -6,10 +6,12 @@ import { PrivateRoute } from 'components/PrivateRoutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUserThunk } from 'redux/thunk';
 import { isRefreshingSelector } from 'redux/selectors';
+import LogInForm from 'components/LogInForm/LogInForm';
+import SignUpForm from 'components/SignUpForm/SignUpForm';
 
 const Contacts = lazy(() => import('../../pages/contacts'));
-const Login = lazy(() => import('../../pages/login'));
-const Register = lazy(() => import('../../pages/register'));
+
+const Form = lazy(() => import('../../components/FormContainer/FormContainer'));
 
 export const App = () => {
   const isRefreshing = useSelector(isRefreshingSelector);
@@ -25,23 +27,37 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route
-          path="/register"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Register />} />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute redirectTo="/contacts" component={<Login />} />
-          }
-        />
-        <Route
           path="/contacts"
           element={
             <PrivateRoute redirectTo="/login" component={<Contacts />} />
           }
         />
+
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<Form />} />
+          }
+        >
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LogInForm />}
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<SignUpForm />}
+              />
+            }
+          />
+        </Route>
       </Route>
     </Routes>
   );
