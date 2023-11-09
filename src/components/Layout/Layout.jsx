@@ -9,7 +9,7 @@ function Layout() {
 
   useEffect(() => {
     if (location.pathname === '/') {
-      navigate('/login');
+      navigate('/register');
     }
   }, [location, navigate]);
 

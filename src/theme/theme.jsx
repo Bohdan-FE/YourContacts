@@ -12,7 +12,7 @@ export const theme = createTheme({
     },
   },
   shape: {
-    borderRadius: 10,
+    borderRadius: 30,
   },
   typography: {
     body1: {
@@ -31,10 +31,29 @@ export const theme = createTheme({
           font-style: normal;
           font-display: swap;
           font-weight: 400;
-          src: local('Lato'), local('Lato-Regular'), url(${Lato}) format('ttf');
-          
+          src: local('Lato'), local('Lato-Regular'), url(${Lato}) format('ttf');  
         }
       `,
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.variant === 'text' && {
+            width: '100%',
+            maxWidth: '150px',
+            color: 'white',
+            p: '8px, 22px',
+            border: '1px solid white',
+          }),
+        }),
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: '#0000007a',
+        },
+      },
     },
   },
 });

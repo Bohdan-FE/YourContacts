@@ -20,8 +20,9 @@ function FormContainer() {
     <Box
       sx={{
         width: '100%',
+        height: '100%',
         maxWidth: '1000px',
-        height: '580px',
+        maxHeight: '580px',
         borderRadius: '14px',
         display: 'flex',
         flexDirection: isLogin ? 'row' : 'row-reverse',
@@ -71,10 +72,6 @@ function FormContainer() {
             textAlign: 'center',
             fontWeight: '600',
           }}
-          layout="true"
-          transition={{
-            duration: 0.3,
-          }}
         >
           {isLogin ? 'Welcome Back!' : 'Welcome, Friend!'}
         </Typography>
@@ -97,12 +94,13 @@ function FormContainer() {
           or
         </Typography>
         <Button
-          sx={{
-            border: '1px solid white',
-            width: '150px',
-            color: 'white',
-            p: '8px, 22px',
-          }}
+          // sx={{
+          //   border: '1px solid white',
+          //   width: '150px',
+          //   color: 'white',
+          //   p: '8px, 22px',
+          // }}
+
           onClick={() => navigate(isLogin ? '/register' : '/login')}
         >
           {isLogin ? 'SIGN UP' : 'LOG IN'}
