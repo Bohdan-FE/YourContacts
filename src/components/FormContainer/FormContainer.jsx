@@ -18,7 +18,7 @@ function FormContainer() {
 
   return (
     <Box
-      sx={{
+      sx={theme => ({
         width: '100%',
         height: '100%',
         maxWidth: '1000px',
@@ -29,7 +29,10 @@ function FormContainer() {
         overflow: 'hidden',
         boxShadow:
           'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;',
-      }}
+        [theme.breakpoints.down('sm')]: {
+          flexDirection: 'column',
+        },
+      })}
       component={motion.div}
       layout
       initial={{ opacity: 0, scale: 0.5 }}
@@ -37,7 +40,7 @@ function FormContainer() {
       transition={{ duration: 0.5 }}
     >
       <Box
-        sx={{
+        sx={theme => ({
           p: '20px',
           display: 'flex',
           flexDirection: 'column',
@@ -45,14 +48,15 @@ function FormContainer() {
           justifyContent: 'center',
           width: '50%',
           gap: '8px',
-        }}
-        component={motion.div}
-        layout="true"
-        style={{
           borderRadius: '25%',
           background:
             'linear-gradient(90deg, rgba(249,178,8,1) 0%, rgba(252,84,4,1) 51%)',
-        }}
+          [theme.breakpoints.down('sm')]: {
+            display: 'none',
+          },
+        })}
+        component={motion.div}
+        layout
         animate={{
           borderTopRightRadius: isLogin ? '25%' : '0',
           borderBottomRightRadius: isLogin ? '25%' : '0',
@@ -93,20 +97,20 @@ function FormContainer() {
         >
           or
         </Typography>
-        <Button
-          // sx={{
-          //   border: '1px solid white',
-          //   width: '150px',
-          //   color: 'white',
-          //   p: '8px, 22px',
-          // }}
-
-          onClick={() => navigate(isLogin ? '/register' : '/login')}
-        >
+        <Button onClick={() => navigate(isLogin ? '/register' : '/login')}>
           {isLogin ? 'SIGN UP' : 'LOG IN'}
         </Button>
       </Box>
-      <Outlet />
+      <Box
+        sx={theme => ({
+          width: '50%',
+          [theme.breakpoints.down('sm')]: {
+            width: '100%',
+          },
+        })}
+      >
+        <Outlet />
+      </Box>
     </Box>
   );
 }

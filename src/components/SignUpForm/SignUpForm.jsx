@@ -27,7 +27,7 @@ function SignUpForm() {
         justifyContent: 'center',
         gap: '20px',
         padding: '15px',
-        width: '50%',
+        width: '100%',
         p: '36px',
       }}
       noValidate
