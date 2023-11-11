@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/thunk';
