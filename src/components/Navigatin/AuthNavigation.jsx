@@ -12,10 +12,13 @@ function AuthNavigation() {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'end',
       }}
     >
-      <Typography varian="h6" mx={'20px'}>{`Welcome ${user.name}`}</Typography>
+      <Typography
+        varian="h6"
+        mx={'20px'}
+        textAlign={'end'}
+      >{`Welcome ${user.name}`}</Typography>
       <Button variant="contained" onClick={() => dispatch(logoutThunk())}>
         Log Out
       </Button>

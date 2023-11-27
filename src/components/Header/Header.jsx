@@ -10,13 +10,28 @@ function Header() {
     <AppBar
       position="static"
       sx={{
-        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         gap: '20px',
-        padding: '15px',
+        padding: '15px 25px',
         bgcolor: 'FC5404',
       }}
     >
-      <Typography>LOGO</Typography>
+      <Typography
+        sx={{ fontSize: '28px', fontWeight: '700', lineHeight: '0.5' }}
+      >
+        YourContacts
+        <Typography
+          component="span"
+          sx={{
+            display: 'block',
+            fontSize: '18px',
+            paddingLeft: '10px',
+          }}
+        >
+          be in touch
+        </Typography>
+      </Typography>
       {isLoggedIn && <AuthNavigation />}
     </AppBar>
   );
