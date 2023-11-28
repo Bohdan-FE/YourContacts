@@ -8,9 +8,15 @@ import AddIcon from '@mui/icons-material/Add';
 function ContactsPage() {
   const [isActivContactForm, setIsActivContactForm] = useState(false);
 
+  const handleOpenContactForm = () => {
+    setIsActivContactForm(!isActivContactForm);
+  };
+
   return (
     <>
-      {isActivContactForm && <ContactForm />}
+      {isActivContactForm && (
+        <ContactForm handleOpenContactForm={handleOpenContactForm} />
+      )}
       <Box
         sx={{
           padding: '15px',
@@ -36,7 +42,7 @@ function ContactsPage() {
           width: '64px',
           height: '64px',
         }}
-        onClick={() => setIsActivContactForm(!isActivContactForm)}
+        onClick={handleOpenContactForm}
       >
         <AddIcon color="black" sx={{ fontSize: 40 }} />
       </Button>
