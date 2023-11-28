@@ -18,6 +18,11 @@ function AuthNavigation() {
         varian="h6"
         mx={'20px'}
         textAlign={'end'}
+        sx={theme => ({
+          [theme.breakpoints.down('sm')]: {
+            display: 'none',
+          },
+        })}
       >{`Welcome ${user.name}`}</Typography>
       <Button variant="contained" onClick={() => dispatch(logoutThunk())}>
         Log Out

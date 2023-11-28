@@ -14,7 +14,7 @@ function Header() {
         justifyContent: 'space-between',
         gap: '20px',
         padding: '15px 25px',
-        bgcolor: 'FC5404',
+        height: '71px',
       }}
     >
       <Typography
