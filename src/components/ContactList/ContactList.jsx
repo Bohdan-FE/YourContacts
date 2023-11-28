@@ -1,9 +1,9 @@
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
-import { List } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getContacsThunk } from 'redux/thunk';
 import { isLoggedInSelector, visibleItemsSelector } from 'redux/selectors';
+import { List } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(visibleItemsSelector);
@@ -17,7 +17,13 @@ export const ContactList = () => {
   }, [dispatch, isLoggedIn]);
 
   return (
-    <List>
+    <List
+      sx={theme => ({
+        maxWidth: '600px',
+        width: '100%',
+        paddingBottom: '100px',
+      })}
+    >
       {contacts.map(contact => (
         <ContactListItem key={contact.id} contact={contact} />
       ))}
