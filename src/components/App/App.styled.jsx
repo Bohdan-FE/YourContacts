@@ -6,8 +6,8 @@ export const Container = styled.div`
   min-height: calc(100vh - 71px);
   width: 100vw;
   display: flex;
-  align-items: center;
   justify-content: center;
   overflow-x: hidden;
   position: relative;
+  background-color: rgb(253 247 236 / 39%);
 `;

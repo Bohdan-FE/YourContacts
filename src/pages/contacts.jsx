@@ -3,6 +3,8 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Fillter';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+
 import AddIcon from '@mui/icons-material/Add';
 
 function ContactsPage() {
@@ -17,6 +19,7 @@ function ContactsPage() {
     <>
       {isActivContactForm && (
         <Box
+          component={motion.div}
           sx={{
             height: '100vh',
             width: '100vw',
@@ -30,6 +33,10 @@ function ContactsPage() {
             justifyContent: 'center',
             alignItems: 'center',
           }}
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
         >
           <ContactForm handleOpenContactForm={handleOpenContactForm} />
         </Box>

@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getContacsThunk } from 'redux/thunk';
 import { isLoggedInSelector, visibleItemsSelector } from 'redux/selectors';
 import { List } from '@mui/material';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const ContactList = () => {
   const contacts = useSelector(visibleItemsSelector);
@@ -24,9 +25,11 @@ export const ContactList = () => {
         paddingBottom: '100px',
       })}
     >
-      {contacts.map(contact => (
-        <ContactListItem key={contact.id} contact={contact} />
-      ))}
+      <AnimatePresence>
+        {contacts.map(contact => (
+          <ContactListItem key={contact.id} contact={contact} />
+        ))}{' '}
+      </AnimatePresence>
     </List>
   );
 };

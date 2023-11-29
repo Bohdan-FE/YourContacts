@@ -53,6 +53,7 @@ function FormContainer() {
         display: 'flex',
         flexDirection: isLogin ? 'row' : 'row-reverse',
         overflow: 'hidden',
+        bgcolor: 'white',
         boxShadow:
           'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;',
         [theme.breakpoints.down('sm')]: {
@@ -64,6 +65,7 @@ function FormContainer() {
       layout
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
       <Box

@@ -6,6 +6,7 @@ import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button } from '@mui/material';
+import { motion } from 'framer-motion';
 
 export const ContactForm = ({ handleOpenContactForm }) => {
   const [name, setName] = useState('');
@@ -60,6 +61,9 @@ export const ContactForm = ({ handleOpenContactForm }) => {
         borderRadius: '14px',
         zIndex: '10',
       })}
+      component={motion.div}
+      initial={{ scale: 0.5 }}
+      animate={{ scale: 1 }}
     >
       <Button
         variant="outline"
@@ -129,34 +133,5 @@ export const ContactForm = ({ handleOpenContactForm }) => {
         </Button>
       </FormControl>
     </Box>
-
-    // <Form action="submit" onSubmit={handleSubmit}>
-    //   <label>
-    //     Name
-    //     <input
-    //       onChange={handleChange}
-    //       value={name}
-    //       type="text"
-    //       name="name"
-    //       pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    //       title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    //       required
-    //     />
-    //   </label>
-    //   <label>
-    //     Number
-    //     <input
-    //       onChange={handleChange}
-    //       value={number}
-    //       type="tel"
-    //       name="number"
-    //       pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-    //       title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-    //       required
-    //     />
-    //   </label>
-
-    //   <button>Add contact</button>
-    // </Form>
   );
 };

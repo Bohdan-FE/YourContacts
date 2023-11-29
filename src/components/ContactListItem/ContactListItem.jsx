@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import CallIcon from '@mui/icons-material/Call';
 import { Box, ListItem, Button } from '@mui/material';
+import { motion } from 'framer-motion';
 
 export const ContactListItem = ({ contact }) => {
   const dispatch = useDispatch();
@@ -26,6 +27,11 @@ export const ContactListItem = ({ contact }) => {
         padding: '8px 0',
         borderBottom: '1px solid rgb(0 0 0 / 27%)',
       }}
+      component={motion.li}
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, x: -100 }}
     >
       <Box sx={{ minWidth: '130px', overflow: 'hidden' }}>
         <Typography sx={{ fontSize: '18px', fontWeight: '600' }}>
