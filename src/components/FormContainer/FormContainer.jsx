@@ -47,9 +47,8 @@ function FormContainer() {
     <Box
       sx={theme => ({
         width: '100%',
-        height: '100%',
+        height: '580px',
         maxWidth: '1000px',
-        maxHeight: '580px',
         borderRadius: '14px',
         display: 'flex',
         flexDirection: isLogin ? 'row' : 'row-reverse',

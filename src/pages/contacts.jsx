@@ -9,13 +9,30 @@ function ContactsPage() {
   const [isActivContactForm, setIsActivContactForm] = useState(false);
 
   const handleOpenContactForm = () => {
+    document.body.style.overflowY = isActivContactForm ? 'visible' : 'hidden';
     setIsActivContactForm(!isActivContactForm);
   };
 
   return (
     <>
       {isActivContactForm && (
-        <ContactForm handleOpenContactForm={handleOpenContactForm} />
+        <Box
+          sx={{
+            height: '100vh',
+            width: '100vw',
+            bgcolor: 'rgb(0 0 0 / 27%)',
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            zIndex: '10',
+            padding: '8px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <ContactForm handleOpenContactForm={handleOpenContactForm} />
+        </Box>
       )}
       <Box
         sx={{
@@ -31,7 +48,6 @@ function ContactsPage() {
         <Filter />
         <ContactList />
       </Box>
-
       <Button
         variant="contained"
         sx={{

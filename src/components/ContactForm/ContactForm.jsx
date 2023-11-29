@@ -49,11 +49,7 @@ export const ContactForm = ({ handleOpenContactForm }) => {
       sx={theme => ({
         display: 'flex',
         flexDirection: 'column',
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        zIndex: '1',
+        position: 'relative',
         bgcolor: 'white',
         alignItems: 'center',
         maxWidth: '500px',
@@ -62,6 +58,7 @@ export const ContactForm = ({ handleOpenContactForm }) => {
         boxShadow:
           'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;',
         borderRadius: '14px',
+        zIndex: '10',
       })}
     >
       <Button
@@ -88,7 +85,16 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           width: '100%',
         })}
       >
-        <FormLabel variant="filled">Create new contact</FormLabel>
+        <FormLabel
+          sx={{
+            fontSize: '32px',
+            fontWeight: '700',
+            color: 'black',
+            textAlign: 'center',
+          }}
+        >
+          Create new contact
+        </FormLabel>
         <TextField
           id="name"
           name="name"
@@ -97,12 +103,6 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           onChange={handleChange}
           sx={{
             width: '100%',
-          }}
-          inputProps={{
-            pattern:
-              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
-            title:
-              "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
           }}
           required
         />
@@ -114,12 +114,6 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           onChange={handleChange}
           sx={{
             width: '100%',
-          }}
-          inputProps={{
-            pattern:
-              '+?d{1,4}?[ .-s]?(?d{1,3}?)?[ .-s]?d{1,4}[ .-s]?d{1,4}[ .-s]?d{1,9}',
-            title:
-              'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
           }}
           required
           type="number"
