@@ -62,8 +62,8 @@ export const ContactForm = ({ handleOpenContactForm }) => {
         zIndex: '10',
       })}
       component={motion.div}
-      initial={{ scale: 0.5 }}
-      animate={{ scale: 1 }}
+      initial={{ y: 400 }}
+      animate={{ y: 0 }}
     >
       <Button
         variant="outline"

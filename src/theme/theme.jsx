@@ -1,19 +1,41 @@
 import { createTheme } from '@mui/material';
 import Lato from '../fonts/Lato-Regular.ttf';
+import { ThemeProvider } from '@mui/material';
+// import { useMemo } from 'react';
 
-export const theme = createTheme({
-  palette: {
-    mode: 'light',
-    primary: {
-      main: '#F98404',
-    },
-    secondary: {
-      main: '#f50057',
-    },
+const ligthPalette = {
+  primary: {
+    main: '#F98404',
   },
+  input: '#F98404',
+  bgcolor: 'rgb(253 247 236 / 39%)',
+};
+
+const darkPalette = {
+  primary: {
+    main: '#2f023e',
+  },
+  text: {
+    primary: '#ffffff',
+  },
+  input: '#ffffff',
+  background: {
+    default: '#250031',
+    paper: '#000000bf',
+  },
+  bgDark: '#000000',
+};
+
+const getDesignTokens = mode => ({
+  palette: {
+    mode,
+    ...(mode === 'light' ? ligthPalette : darkPalette),
+  },
+
   shape: {
     borderRadius: 30,
   },
+
   typography: {
     body1: {
       fontSize: '1.2rem',
@@ -23,6 +45,7 @@ export const theme = createTheme({
     },
     fontFamily: 'Lato',
   },
+
   components: {
     MuiCssBaseline: {
       styleOverrides: `
@@ -48,12 +71,37 @@ export const theme = createTheme({
         }),
       },
     },
+
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          borderColor: '#0000007a',
+          ...(mode === 'light' && { borderColor: '#0000007a' }),
+        },
+      },
+    },
+
+    MuiPaper: {
+      styleOverrides: {
+        elevation8: {
+          ...(mode === 'light'
+            ? {
+                boxShadow:
+                  'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
+              }
+            : {
+                boxShadow:
+                  'rgb(108 103 108 / 25%) 0px 14px 28px, rgb(153 79 79 / 22%) 0px 10px 10px',
+              }),
         },
       },
     },
   },
 });
+
+function Theme({ children }) {
+  const theme = createTheme(getDesignTokens('light'));
+
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+}
+
+export default Theme;

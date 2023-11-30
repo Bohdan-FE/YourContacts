@@ -17,6 +17,7 @@ export const Filter = () => {
           width: '100%',
           maxWidth: '350px',
         }}
+        color="input"
         value={filter}
         onChange={handleChange}
         label="Find contacts by name"

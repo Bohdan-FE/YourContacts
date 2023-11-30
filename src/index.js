@@ -10,19 +10,19 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import {theme} from './theme/theme'
+import { CssBaseline } from '@mui/material';
+import Theme from './theme/theme'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
+        <Theme>
           <CssBaseline />
-        <BrowserRouter basename='/goit-react-hw-08-phonebook'>
-          <App />
+            <BrowserRouter basename='/goit-react-hw-08-phonebook'>
+              <App />
           </BrowserRouter>
-        </ThemeProvider>
+        </Theme>
      </PersistGate> 
     </Provider>
   </React.StrictMode>

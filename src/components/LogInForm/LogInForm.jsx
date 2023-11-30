@@ -52,6 +52,7 @@ function LogInForm() {
         sx={{
           width: '100%',
         }}
+        color="input"
       />
       <TextField
         required
@@ -63,6 +64,7 @@ function LogInForm() {
         sx={{
           width: '100%',
         }}
+        color="input"
       />
       <Button
         type="submit"

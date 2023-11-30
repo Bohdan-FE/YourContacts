@@ -9,13 +9,14 @@ function Header() {
   return (
     <AppBar
       position="static"
-      sx={{
+      sx={theme => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         gap: '20px',
         padding: '15px 25px',
         height: '71px',
-      }}
+        bgcolor: theme.palette.primary.main,
+      })}
     >
       <Typography
         sx={{ fontSize: '28px', fontWeight: '700', lineHeight: '0.5' }}

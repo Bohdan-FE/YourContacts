@@ -36,7 +36,7 @@ function ContactsPage() {
           layout
           initial={{ opacity: 0.8 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
           <ContactForm handleOpenContactForm={handleOpenContactForm} />
         </Box>
