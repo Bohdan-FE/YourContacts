@@ -34,7 +34,7 @@ function ContactsPage() {
             alignItems: 'center',
           }}
           layout
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 0.8 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >

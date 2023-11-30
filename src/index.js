@@ -10,7 +10,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider, CssBaseline } from '@mui/material';
 import {theme} from './theme/theme'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -18,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
         <BrowserRouter basename='/goit-react-hw-08-phonebook'>
           <App />
           </BrowserRouter>
