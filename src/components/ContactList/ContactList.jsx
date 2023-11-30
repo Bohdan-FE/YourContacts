@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { getContacsThunk } from 'redux/thunk';
 import { isLoggedInSelector, visibleItemsSelector } from 'redux/selectors';
 import { List } from '@mui/material';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 export const ContactList = () => {
   const contacts = useSelector(visibleItemsSelector);
