@@ -27,6 +27,7 @@ const darkPalette = {
   },
   text: {
     primary: '#ffffff',
+    body2: '#ffffff43',
   },
   input: '#ffffff',
   background: {

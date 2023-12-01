@@ -8,6 +8,7 @@ import { refreshUserThunk } from 'redux/thunk';
 import { isRefreshingSelector } from 'redux/selectors';
 import LogInForm from 'components/LogInForm/LogInForm';
 import SignUpForm from 'components/SignUpForm/SignUpForm';
+import Spinner from 'components/Spinner/Spinner';
 
 const Contacts = lazy(() => import('../../pages/contacts'));
 
@@ -22,7 +23,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>Refreshing...</p>
+    <Spinner />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

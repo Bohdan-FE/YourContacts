@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getContacsThunk } from 'redux/thunk';
 import { isLoggedInSelector, visibleItemsSelector } from 'redux/selectors';
-import { List } from '@mui/material';
+import { List, Typography } from '@mui/material';
 import { AnimatePresence } from 'framer-motion';
 
 export const ContactList = () => {
@@ -18,18 +18,25 @@ export const ContactList = () => {
   }, [dispatch, isLoggedIn]);
 
   return (
-    <List
-      sx={theme => ({
-        maxWidth: '600px',
-        width: '100%',
-        paddingBottom: '100px',
-      })}
-    >
-      <AnimatePresence>
-        {contacts.map(contact => (
-          <ContactListItem key={contact.id} contact={contact} />
-        ))}{' '}
-      </AnimatePresence>
-    </List>
+    <>
+      {contacts.length === 0 && (
+        <Typography variant="body2">
+          Click on '+' to add your first contact
+        </Typography>
+      )}
+      <List
+        sx={theme => ({
+          maxWidth: '600px',
+          width: '100%',
+          paddingBottom: '100px',
+        })}
+      >
+        <AnimatePresence>
+          {contacts.map(contact => (
+            <ContactListItem key={contact.id} contact={contact} />
+          ))}{' '}
+        </AnimatePresence>
+      </List>
+    </>
   );
 };

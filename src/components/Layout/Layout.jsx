@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import Header from 'components/Header/Header';
+import Spinner from 'components/Spinner/Spinner';
 import { Suspense, useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ function Layout() {
           bgcolor: theme.palette.background.container,
         })}
       >
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spinner />}>
           <Outlet />
         </Suspense>
       </Box>
