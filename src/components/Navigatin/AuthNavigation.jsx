@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutThunk } from 'redux/thunk';
+import { IconButton } from '@mui/material';
 
 function AuthNavigation() {
   const { user } = useSelector(state => state.auth);
@@ -27,13 +27,9 @@ function AuthNavigation() {
           },
         })}
       >{`Welcome ${user.name}!`}</Typography>
-      <Button
-        variant="outline"
-        sx={{ borderRadius: '50%', width: '64px', height: '64px' }}
-        onClick={() => dispatch(logoutThunk())}
-      >
+      <IconButton variant="outline" onClick={() => dispatch(logoutThunk())}>
         <LogoutIcon />
-      </Button>
+      </IconButton>
     </Box>
   );
 }

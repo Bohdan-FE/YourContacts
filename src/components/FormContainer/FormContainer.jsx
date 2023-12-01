@@ -30,6 +30,9 @@ function FormContainer() {
   const mobileAnimation = {
     borderTopLeftRadius: '26%',
     borderTopRightRadius: '26%',
+    background: isLogin
+      ? `linear-gradient(90deg, ${lightColorGradient} 0%, ${darkColorGradient}) 100%`
+      : `linear-gradient(90deg, ${darkColorGradient} 0%, ${lightColorGradient}) 100%`,
   };
 
   useEffect(() => {
@@ -86,7 +89,8 @@ function FormContainer() {
           gap: '8px',
           [theme.breakpoints.down('sm')]: {
             width: '100%',
-            height: '18%',
+            height: '25%',
+            gap: '2px',
           },
         })}
         component={motion.div}
@@ -107,26 +111,28 @@ function FormContainer() {
             >
               {isLogin ? 'Welcome Back!' : 'Welcome, Friend!'}
             </Typography>
-            <Typography
-              component="p"
-              color={'white'}
-              sx={{
-                textAlign: 'center',
-              }}
-            >
-              Enter your personal details to use all of the features
-            </Typography>
-            <Typography
-              component="p"
-              color={'white'}
-              sx={{
-                textAlign: 'center',
-              }}
-            >
-              or
-            </Typography>
           </>
         )}
+        <Typography
+          component="p"
+          color={'white'}
+          sx={theme => ({
+            textAlign: 'center',
+            [theme.breakpoints.down('sm')]: { fontSize: '14px' },
+          })}
+        >
+          Enter your personal details to use all of the features
+        </Typography>
+        <Typography
+          component="p"
+          color={'white'}
+          sx={{
+            textAlign: 'center',
+            [theme.breakpoints.down('sm')]: { fontSize: '14px' },
+          }}
+        >
+          or
+        </Typography>
         <Button onClick={() => navigate(isLogin ? '/register' : '/login')}>
           {isLogin ? 'SIGN UP' : 'LOG IN'}
         </Button>
@@ -140,7 +146,7 @@ function FormContainer() {
           justifyContent: 'center',
           [theme.breakpoints.down('sm')]: {
             width: '100%',
-            height: '82%',
+            height: '75%',
           },
         })}
       >

@@ -1,14 +1,24 @@
 import { createTheme } from '@mui/material';
 import Lato from '../fonts/Lato-Regular.ttf';
 import { ThemeProvider } from '@mui/material';
-// import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { themeSelector } from 'redux/selectors';
+import { useMemo } from 'react';
 
 const ligthPalette = {
   primary: {
     main: '#F98404',
   },
   input: '#F98404',
-  bgcolor: 'rgb(253 247 236 / 39%)',
+  background: {
+    paper: 'rgb(231 222 207 / 39%)',
+    container: 'rgb(245 238 227 / 39%)',
+  },
+  text: {
+    primary: '#000000',
+  },
+  bgDark: '#ffffff',
+  borderBottom: '1px solid rgb(0 0 0 / 27%)',
 };
 
 const darkPalette = {
@@ -21,9 +31,11 @@ const darkPalette = {
   input: '#ffffff',
   background: {
     default: '#250031',
-    paper: '#000000bf',
+    paper: '#0e0d0d',
+    container: '#1d1b1b',
   },
   bgDark: '#000000',
+  borderBottom: '1px solid rgb(174 149 149 / 56%)',
 };
 
 const getDesignTokens = mode => ({
@@ -77,6 +89,13 @@ const getDesignTokens = mode => ({
         notchedOutline: {
           ...(mode === 'light' && { borderColor: '#0000007a' }),
         },
+        input: {
+          ...(mode === 'dark' && {
+            ':-webkit-autofill': {
+              WebkitBoxShadow: '0 0 0 100px #131e26 inset !important',
+            },
+          }),
+        },
       },
     },
 
@@ -90,7 +109,7 @@ const getDesignTokens = mode => ({
               }
             : {
                 boxShadow:
-                  'rgb(108 103 108 / 25%) 0px 14px 28px, rgb(153 79 79 / 22%) 0px 10px 10px',
+                  'rgb(9 12 11) 0px 14px 28px, rgb(153 79 79 / 22%) 0px 10px 10px',
               }),
         },
       },
@@ -99,8 +118,12 @@ const getDesignTokens = mode => ({
 });
 
 function Theme({ children }) {
-  const theme = createTheme(getDesignTokens('light'));
-
+  const themeMode = useSelector(themeSelector);
+  const theme = useMemo(
+    () => createTheme(getDesignTokens(themeMode)),
+    [themeMode]
+  );
+  console.log(theme);
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
 

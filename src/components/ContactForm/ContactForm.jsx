@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 
 export const ContactForm = ({ handleOpenContactForm }) => {
@@ -46,21 +46,20 @@ export const ContactForm = ({ handleOpenContactForm }) => {
   };
 
   return (
-    <Box
+    <Paper
       sx={theme => ({
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        bgcolor: 'white',
+        bgcolor: theme.palette.bgDark,
         alignItems: 'center',
         maxWidth: '500px',
         width: '100%',
         padding: '15px 30px 36px',
-        boxShadow:
-          'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;',
         borderRadius: '14px',
         zIndex: '10',
       })}
+      elevation={8}
       component={motion.div}
       initial={{ y: 400 }}
       animate={{ y: 0 }}
@@ -93,7 +92,6 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           sx={{
             fontSize: '32px',
             fontWeight: '700',
-            color: 'black',
             textAlign: 'center',
           }}
         >
@@ -108,6 +106,7 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           sx={{
             width: '100%',
           }}
+          color="input"
           required
         />
         <TextField
@@ -121,6 +120,7 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           }}
           required
           type="number"
+          color="input"
         />
         <Button
           variant="contained"
@@ -132,6 +132,6 @@ export const ContactForm = ({ handleOpenContactForm }) => {
           Create
         </Button>
       </FormControl>
-    </Box>
+    </Paper>
   );
 };

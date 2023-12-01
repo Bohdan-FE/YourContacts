@@ -9,6 +9,7 @@ import { persistStore, FLUSH,
   PURGE,
   REGISTER, persistReducer } from 'redux-persist'
 import { authReducer } from "./authSlice";
+import { themeReducer } from './themeSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -21,7 +22,8 @@ export const store = configureStore({
   reducer: {
         auth: persistReducer(authPersistConfig, authReducer),
         contacts: contactsReducer,
-        filter: filterReduser
+        filter: filterReduser,
+        theme: themeReducer
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -22,11 +22,11 @@ export const ContactListItem = ({ contact }) => {
 
   return (
     <ListItem
-      sx={{
+      sx={theme => ({
         justifyContent: 'space-between',
         padding: '8px 0',
-        borderBottom: '1px solid rgb(0 0 0 / 27%)',
-      }}
+        borderBottom: theme.palette.borderBottom,
+      })}
       component={motion.li}
       layout
       initial={{ opacity: 0 }}

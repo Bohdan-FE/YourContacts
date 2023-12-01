@@ -24,9 +24,10 @@ function Layout() {
           width: '100vw',
           display: 'flex',
           justifyContent: 'center',
+          alignItems: 'center',
           overflowX: 'hidden',
           position: 'relative',
-          bgcolor: theme.palette.background.paper,
+          bgcolor: theme.palette.background.container,
         })}
       >
         <Suspense fallback={<div>Loading...</div>}>

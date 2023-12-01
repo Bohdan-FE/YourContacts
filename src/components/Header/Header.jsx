@@ -1,9 +1,14 @@
-import { AppBar, Typography } from '@mui/material';
+import { AppBar, Typography, IconButton } from '@mui/material';
 import AuthNavigation from 'components/Navigatin/AuthNavigation';
-import { useSelector } from 'react-redux';
-import { isLoggedInSelector } from 'redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { isLoggedInSelector, themeSelector } from 'redux/selectors';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import { changeTheme } from 'redux/themeSlice';
 
 function Header() {
+  const theme = useSelector(themeSelector);
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(isLoggedInSelector);
 
   return (
@@ -33,6 +38,14 @@ function Header() {
           be in touch
         </Typography>
       </Typography>
+      <IconButton
+        sx={{ marginLeft: 'auto' }}
+        onClick={() =>
+          dispatch(changeTheme(theme === 'light' ? 'dark' : 'light'))
+        }
+      >
+        {theme === 'light' ? <LightModeIcon /> : <Brightness4Icon />}
+      </IconButton>
       {isLoggedIn && <AuthNavigation />}
     </AppBar>
   );
