@@ -34,7 +34,7 @@ const darkPalette = {
     paper: '#0e0d0d',
     container: '#1d1b1b',
   },
-  bgDark: '#000000',
+  bgDark: '#080808;',
   borderBottom: '1px solid rgb(174 149 149 / 56%)',
 };
 
@@ -109,7 +109,7 @@ const getDesignTokens = mode => ({
               }
             : {
                 boxShadow:
-                  'rgb(9 12 11) 0px 14px 28px, rgb(153 79 79 / 22%) 0px 10px 10px',
+                  'rgb(18 24 22 / 32%) 0px 14px 28px, rgb(46 8 82 / 22%) 0px 10px 10px;',
               }),
         },
       },
