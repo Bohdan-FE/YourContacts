@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         <Theme>
           <CssBaseline />
-            <BrowserRouter basename='/YourContacts'>
+            <BrowserRouter basename='/yourcontacts'>
               <App />
           </BrowserRouter>
         </Theme>
