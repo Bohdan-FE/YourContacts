@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <PersistGate loading={null} persistor={persistor}>
         <Theme>
           <CssBaseline />
-            <BrowserRouter basename='/goit-react-hw-08-phonebook'>
+            <BrowserRouter basename='/YourContacts'>
               <App />
           </BrowserRouter>
         </Theme>
